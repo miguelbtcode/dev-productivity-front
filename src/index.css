@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-background: 0 0% 100%;
+    --color-text-primary: 0 0% 10%;
+    --color-text-secondary: 215 14% 34%;
+    --color-primary: 211 100% 50%;
+    --color-primary-hover: 211 100% 45%;
+    --color-secondary: 210 20% 92%;
+    --color-accent: 24 94% 56%;
+    --color-border: 210 20% 92%;
+    --color-card: 0 0% 100%;
+    --color-card-hover: 210 20% 98%;
+    --color-success: 142 72% 29%;
+    --color-warning: 38 92% 50%;
+    --color-error: 0 72% 51%;
+    --color-shadow: 0 0% 0%;
+  }
+
+  .dark {
+    --color-background: 222 47% 11%;
+    --color-text-primary: 210 20% 92%;
+    --color-text-secondary: 214 32% 79%;
+    --color-primary: 210 100% 59%;
+    --color-primary-hover: 210 100% 64%;
+    --color-secondary: 215 28% 17%;
+    --color-accent: 24 94% 56%;
+    --color-border: 215 28% 17%;
+    --color-card: 222 47% 14%;
+    --color-card-hover: 222 47% 16%;
+    --color-success: 142 72% 35%;
+    --color-warning: 38 92% 54%;
+    --color-error: 0 72% 58%;
+    --color-shadow: 0 0% 0%;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-text-primary transition-colors duration-200;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.kanban-column {
+  @apply bg-card rounded-lg p-4 min-h-[70vh] flex flex-col;
+  min-width: 280px;
+  height: fit-content;
+}
+
+.task-card {
+  @apply bg-card border border-border rounded-lg p-4 transition-all duration-200;
+}
+
+.task-card:hover {
+  @apply bg-card-hover shadow-sm;
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in-right {
+  animation: slideInRight 0.3s ease-in-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.3s ease-in-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-secondary/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-secondary rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-secondary/80;
+}
